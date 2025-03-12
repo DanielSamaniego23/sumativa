@@ -1,0 +1,31 @@
+<div class="container">
+    <h2>1. Crear Nuevo Reporte</h2>
+    <p>Como técnico de mantenimiento, necesito poder documentar el estado de un equipo mediante:</p>
+  
+    <div class="form-box">
+      <h3>Ejemplo de Formulario de Nuevo Reporte</h3>
+  
+      <label for="id-equipo">ID del Equipo</label>
+      <input type="text" id="id-equipo" [(ngModel)]="idEquipo" placeholder="Ej: EQ-2024-001" />
+  
+      <div class="image-box">
+        <button (click)="takePicture()" class="take-picture-button">Tomar Foto</button>
+  
+        <div *ngIf="loading" class="loading-text">Cargando imagen...</div>
+  
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  
+        <div *ngIf="imagenUrl; else placeholder">
+          <img [src]="imagenUrl" alt="Imagen seleccionada o tomada" />
+        </div>
+        <ng-template #placeholder>
+          <div class="placeholder">300×150</div>
+        </ng-template>
+      </div>
+  
+      <label for="descripcion">Descripción del Problema</label>
+      <textarea id="descripcion" [(ngModel)]="descripcionProblema" placeholder="Describe el estado o problema del equipo..."></textarea>
+  
+      <button class="btn" (click)="guardarReporte()">Guardar Reporte</button>
+    </div>
+</div>

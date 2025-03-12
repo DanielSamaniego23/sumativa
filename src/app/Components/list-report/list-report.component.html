@@ -1,1 +1,25 @@
-<p>list-report works!</p>
+<div class="report-container">
+    <h2>2. Visualizar Lista de Reportes</h2>
+    <p>Como técnico, necesito ver todos los reportes creados de manera organizada:</p>
+  
+    <div *ngFor="let reporte of reportes; let i = index" class="report-card">
+      <div class="image-box">
+        <img *ngIf="reporte.imagen; else placeholder" [src]="reporte.imagen" alt="Imagen del reporte" />
+        <ng-template #placeholder>
+          <div class="placeholder">300×150</div>
+        </ng-template>
+      </div>
+  
+      <div class="report-info">
+        <p><strong>ID del Equipo:</strong> {{ reporte.idEquipo }}</p>
+        <p>{{ reporte.descripcion }}</p>
+      </div>
+  
+      <div class="actions">
+        <!-- Botón que llama al método verDetalleReporte() y pasa el id del reporte -->
+        <button class="btn details" (click)="verDetalleReporte(reporte.id)">Ver Detalles</button>
+        <button class="btn delete" (click)="eliminarReporte(i)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+  
