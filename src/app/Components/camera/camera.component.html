@@ -1,0 +1,13 @@
+<!-- Botón para tomar foto -->
+<button (click)="takePicture()" class="take-picture-button">Foto</button>
+
+<!-- Indicador de carga -->
+<div *ngIf="loading" class="loading-text">Cargando imagen...</div>
+
+<!-- Mostrar error si hay -->
+<div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+<!-- Mostrar la imagen dentro de un marco si hay imagen -->
+<div *ngIf="imgUrl" class="image-frame">
+  <img [src]="imgUrl" alt="Imagen tomada" />
+</div>
